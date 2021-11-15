@@ -2,7 +2,9 @@ package com.rushia.aqitracker;
 
 import android.Manifest;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +42,7 @@ import org.json.JSONObject;
 
 import java.security.Provider;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MyAirFragment extends Fragment {
 
@@ -93,9 +96,11 @@ public class MyAirFragment extends Fragment {
 
     private Handler handler = new Handler();
     Runnable runnable;
-    final long delay = 60*30*1000;
+    final long delay = 10*1000;
 
     private int aqi;
+
+    SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -103,6 +108,20 @@ public class MyAirFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_air, container, false);
 
         Initialize(view);
+
+        sharedPreferences = this.requireActivity().getSharedPreferences("device-data", Context.MODE_PRIVATE);
+        textViewAQIValue.setText(sharedPreferences.getString("aqi", "0"));
+        textViewPM25Value.setText(sharedPreferences.getString("pm25", "0"));
+        textViewPM10Value.setText(sharedPreferences.getString("pm10", "0"));
+        textViewHCHOValue.setText(sharedPreferences.getString("hcho", "0"));
+        textViewTVOCValue.setText(sharedPreferences.getString("tvoc", "0"));
+        textViewCO2Value.setText(sharedPreferences.getString("co2", "0"));
+        textViewTemperatureValue.setText(sharedPreferences.getString("temp", "0°C"));
+        textViewHumidityValue.setText(sharedPreferences.getString("humidity", "0%"));
+        textViewLastUpdatedInfo.setText(sharedPreferences.getString("time", "Last updated"));
+
+        changeFrameColor(Integer.parseInt(textViewAQIValue.getText().toString()));
+
 
         MainActivity mainActivity = (MainActivity) getActivity();
         assert mainActivity != null;
@@ -112,8 +131,23 @@ public class MyAirFragment extends Fragment {
         runnable = new Runnable() {
             @Override
             public void run() {
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 process();
-                handler.postDelayed(runnable, 10000);
+
+                // get and save data
+                editor.putString("aqi", textViewAQIValue.getText().toString());
+                editor.putString("co2", textViewCO2Value.getText().toString());
+                editor.putString("hcho", textViewHCHOValue.getText().toString());
+                editor.putString("tvoc", textViewTVOCValue.getText().toString());
+                editor.putString("pm25", textViewPM25Value.getText().toString());
+                editor.putString("pm10", textViewPM10Value.getText().toString());
+                editor.putString("temp", textViewTemperatureValue.getText().toString());
+                editor.putString("humidity", textViewHumidityValue.getText().toString());
+                editor.putString("time", textViewLastUpdatedInfo.getText().toString());
+                editor.apply();
+
+                handler.postDelayed(runnable, delay);
             }
         };
 
@@ -124,7 +158,7 @@ public class MyAirFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), pm25Activity.class);
                 startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
+                requireActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
             }
         });
 
@@ -133,7 +167,7 @@ public class MyAirFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), pm10Activity.class);
                 startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
+                requireActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
             }
         });
 
@@ -179,7 +213,7 @@ public class MyAirFragment extends Fragment {
 //                }
                 Intent intent = new Intent(getActivity(), SendMailActivity.class);
                 startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
+                requireActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
             }
         });
 
@@ -198,8 +232,8 @@ public class MyAirFragment extends Fragment {
             textViewHCHOValue.setText(deviceData.getHcho()+"");
             textViewTVOCValue.setText(deviceData.getTvoc()+"");
             textViewCO2Value.setText(deviceData.getCo2()+"");
-            textViewTemperatureValue.setText(deviceData.getTemperature()+"");
-            textViewHumidityValue.setText(deviceData.getHumidity()+"");
+            textViewTemperatureValue.setText(deviceData.getTemperature()+"°C");
+            textViewHumidityValue.setText(deviceData.getHumidity()+"%");
 
             String time = deviceData.getTime();
             int hour = Integer.parseInt(time.substring(0, 2));
@@ -623,17 +657,11 @@ public class MyAirFragment extends Fragment {
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putInt("aqi", aqi);
-
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
 
-        if (savedInstanceState != null) {
-            aqi = savedInstanceState.getInt("aqi");
-            textViewAQIValue.setText(String.valueOf(aqi));
-        }
     }
 }

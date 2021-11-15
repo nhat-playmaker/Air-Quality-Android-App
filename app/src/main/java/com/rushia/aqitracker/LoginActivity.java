@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -48,6 +49,8 @@ public class LoginActivity extends AppCompatActivity {
     ArrayList<DeviceInfo> arrayDevice;
     CheckBox checkBoxRemember;
 
+    SharedPreferences accountSave;
+
     boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -56,6 +59,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Initialize();
+
+        accountSave = getSharedPreferences("data-login", MODE_PRIVATE);
+        editTextDeviceID.setText(accountSave.getString("device-id", ""));
+        editTextDevicePassword.setText(accountSave.getString("device-password", ""));
+        checkBoxRemember.setChecked(accountSave.getBoolean("checked-remember", false));
 
         String url_device = "https://aqitracker-abcteam.000webhostapp.com/";
         getDeviceInformation(url_device);
@@ -82,6 +90,22 @@ public class LoginActivity extends AppCompatActivity {
                         String devicePassword = editTextDevicePassword.getText().toString();
                         if (devicePassword.equals(arrayDevice.get(i).getDevicePassword())) {
                             loginOK = true;
+
+                            if (checkBoxRemember.isChecked()) {
+                                SharedPreferences.Editor editor = accountSave.edit();
+                                editor.putString("device-id", deviceID);
+                                editor.putString("device-password", devicePassword);
+                                editor.putBoolean("checked-remember", true);
+                                editor.apply();
+                            }
+                            else {
+                                SharedPreferences.Editor editor = accountSave.edit();
+                                editor.remove("device-id");
+                                editor.remove("device-password");
+                                editor.remove("checked-remember");
+                                editor.apply();
+                            }
+
                             Bundle bundle = new Bundle();
                             bundle.putString("device-id", deviceID);
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
