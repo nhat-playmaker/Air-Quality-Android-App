@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,11 +36,13 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.security.Provider;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -246,9 +249,14 @@ public class MyAirFragment extends Fragment {
             textViewLastUpdatedInfo.setText("Last updated " + String.valueOf(hour) + time.substring(2, time.length()));
 
             aqi = calcAQI(deviceData.getPm25());
+            arrayData.get(0).setAqi(aqi);
 
             Bundle result = new Bundle();
             result.putInt("aqi", aqi);
+
+            String JSONdata = new Gson().toJson(arrayData);
+            result.putString("arrayData", JSONdata);
+
             getParentFragmentManager().setFragmentResult("dataFromMyAirFragment", result);
             
             textViewAQIValue.setText(aqi+"");

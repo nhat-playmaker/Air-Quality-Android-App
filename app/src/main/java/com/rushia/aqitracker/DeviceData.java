@@ -1,7 +1,9 @@
 package com.rushia.aqitracker;
 
-public class DeviceData {
-    private int id, co2, hcho, tvoc, pm25, pm100;
+import java.io.Serializable;
+
+public class DeviceData implements Serializable {
+    private int id, co2, hcho, tvoc, pm25, pm100, aqi;
     private double temperature, humidity;
     private String date, time;
 
@@ -16,6 +18,14 @@ public class DeviceData {
         this.humidity = humidity;
         this.date = date;
         this.time = time;
+    }
+
+    public int getAqi() {
+        return aqi;
+    }
+
+    public void setAqi(int aqi) {
+        this.aqi = aqi;
     }
 
     public int getId() {
