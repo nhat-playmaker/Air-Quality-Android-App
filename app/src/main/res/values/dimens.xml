@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="headerTextSize">25sp</dimen>
+    <dimen name="newsMoreTextSize">20sp</dimen>
+    <dimen name="loginViewsMargin">40dp</dimen>
+    <dimen name="logoSize">50dp</dimen>
+    <dimen name="scriptSize">15sp</dimen>
+    <dimen name="indexSize">18sp</dimen>
+    <dimen name="frameContentMarginStartEnd">20dp</dimen>
+    <dimen name="iconFaceSize">80dp</dimen>
+    <dimen name="rcm_frame">70dp</dimen>
+    <dimen name="margin_rcm_start_end">10dp</dimen>
+    <dimen name="rcm_content_margin">20dp</dimen>
+</resources>

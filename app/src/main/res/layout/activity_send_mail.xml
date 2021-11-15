@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
+    tools:context=".SendMailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarEmail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:title="Send Report"
+        app:navigationIcon="@drawable/icon_back"
+        android:background="@color/primaryTextColor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Contact Form"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textColor="@color/contentTextColor"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="20dp"
+            android:text="If you have any problem, please report to us by sending an email with the detailed description of that problems"
+            android:textSize="18sp"
+            android:textColor="@color/contentTextColor"
+            android:textStyle="italic"/>
+
+        <EditText
+            android:id="@+id/editTextSubject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Problem Subject"
+            android:textSize="18sp"
+            android:textColor="@color/primaryTextColor"
+            android:textColorHint="@color/primaryGrayColor"
+            android:padding="10dp"
+            android:maxLines="3"
+            android:background="@drawable/custom_input"/>
+
+        <EditText
+            android:id="@+id/editTextProblemDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:hint="Problem Details"
+            android:textSize="18sp"
+            android:textColor="@color/primaryTextColor"
+            android:textColorHint="@color/primaryGrayColor"
+            android:padding="10dp"
+            android:maxLines="10"
+            android:background="@drawable/custom_input"/>
+
+        <Button
+            android:id="@+id/buttonSendMail"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="SEND"
+            android:textSize="24sp"
+            android:backgroundTint="@color/good_level"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

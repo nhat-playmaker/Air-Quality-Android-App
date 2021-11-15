@@ -1,0 +1,158 @@
+<resources>
+    <string name="app_name">AQI Tracker</string>
+
+    <string name="info_dialog">
+
+        AQI - stand for Air Quality Index - is a system for reporting the severity of air quality levels in relatable terms to the public.
+        This index has a value in the range of 0 - 500, where high the index values indicate higher the level of air pollution and higher potential for adverse health effects.
+        Any value larger than 300, for example, is considered to be hazardous, meanwhile an AQI value of 0 - 50, on the other hand, represents good air quality.
+
+    </string>
+
+    <!-- Good level script -->
+    <string name="status_good">Good</string>
+    <string name="index_good">0 – 50: Good</string>
+    <string name="script_good">
+        The air quality is satisfactory and poses little or no risk for your health. Ventilating your home is recommended.
+    </string>
+
+    <!-- Moderate level script -->
+    <string name="status_moderate">Moderate</string>
+    <string name="index_moderate">51 – 100: Moderate</string>
+    <string name="script_moderate">
+        Sensitive individuals should avoid outdoor activity as they may experience respiratory symptoms.
+    </string>
+
+    <!-- Unhealthy for sensitive groups level script -->
+    <string name="status_unhealthyForSensitiveGroups">Unhealthy for sensitive groups</string>
+    <string name="index_unhealthyForSensitiveGroups">101 – 150: Unhealthy for sensitive groups</string>
+    <string name="script_unhealthyForSensitiveGroups">
+        General public and sensitive individuals in particular are at risk to experience irritation and respiratory problems.
+    </string>
+
+    <!-- Unhealthy level script -->
+    <string name="status_unhealthy">Unhealthy</string>
+    <string name="index_unhealthy">151 – 200: Unhealthy</string>
+    <string name="script_unhealthy">
+        Increased likelihood of adverse effects and aggravation to the heart and lungs among general public - particularly for sensitive groups.
+    </string>
+
+    <!-- Very unhealthy level script -->
+    <string name="status_veryUnhealthy">Very unhealthy</string>
+    <string name="index_veryUnhealthy">201 – 300: Very unhealthy</string>
+    <string name="script_veryUnhealthy">
+        The air quality is satisfactory and poses little or no risk for your health. Ventilating your home is recommended.
+    </string>
+
+    <!-- Hazardous level script -->
+    <string name="status_hazardous">Hazardous</string>
+    <string name="index_hazardous">301 – 500: Hazardous</string>
+    <string name="script_hazardous">
+        General public and sensitive groups are at the high risk to experience strong irritations and adverse health effects that could trigger other illnesses.
+        Everyone should avoid exercise and remain indoors.
+    </string>
+
+    <string name="health_rcm">Health recommendations</string>
+
+    <!-- TODO: Good recommend -->
+    <string name="good_rcm_cycling">Enjoy outdoor activities</string>
+    <string name="good_rcm_window">Open your windows to bring clean and fresh air indoor</string>
+
+    <!-- TODO: Moderate recommend -->
+    <string name="moderate_rcm_cycling">Sensitive groups should reduce outdoor exercise</string>
+    <string name="moderate_rcm_window">Close your window to avoid dirty outdoor air</string>
+
+    <!-- TODO: Unhealthy for sensitive groups recommend -->
+    <string name="unhealthyForSensitiveGroups_rcm_cycling">Everyone should reduce outdoor exercise</string>
+    <string name="unhealthyForSensitiveGroups_rcm_window">Close your window to avoid dirty outdoor air</string>
+    <string name="unhealthyForSensitiveGroups_rcm_faceMask">Sensitive groups should wear a mask outdoors</string>
+    <string name="unhealthyForSensitiveGroups_rcm_airFilter">Run an air purifier</string>
+
+    <!-- TODO: Unhealthy recommend -->
+    <string name="unhealthy_rcm_cycling">Avoid outdoor exercise</string>
+    <string name="unhealthy_rcm_window">Close your window to avoid dirty outdoor air</string>
+    <string name="unhealthy_rcm_faceMask">Wear a mask outdoors</string>
+    <string name="unhealthy_rcm_airFilter">Run an air purifier</string>
+
+    <!-- TODO: PM25 info page -->
+    <string name="pm25_intro">
+        PM2.5 particles are floating particulate matter in the air measuring 2.5 micrometer in diameter or less.
+        PM2.5 is so small it can be absorbed into th bloodstream upon inhalation.
+        For this reason, it is typically the pollutant posing the greatest health thread.
+    </string>
+
+    <string-array name="pm25_origin">
+        <item>+ Combustion resulting from power plants</item>
+        <item>+ Smoke and soot from wildfires and waste burning</item>
+        <item>+ Vehicular emissions and combustion from motors</item>
+        <item>+ Industrial processes involving chemical reactions between gases (sulfur dioxide, nitrogen oxides, and
+        volatile organic compounds</item>
+    </string-array>
+
+    <string-array name="pm25_shortTermEffects">
+        <item>+ Irritation to the eyes</item>
+        <item>+ Irregular heartbeats</item>
+        <item>+ Asthma attacks</item>
+        <item>+ Coughing, chest tightness, and shortness of breath</item>
+    </string-array>
+
+    <string-array name="pm25_LongTermEffects">
+        <item>+ Respiratory illness such as bronchitis, asthma, emphysema</item>
+        <item>+ Lung tissue damage</item>
+        <item>+ Cancer, heart attack</item>
+        <item>+ Stroke</item>
+        <item>+ Premature death</item>
+    </string-array>
+
+    <!-- TODO: PM10 info page -->
+    <string name="pm10_intro">
+        PM10 is suspended particulate matter in th air with a diameter of 10 micrometers or less (including
+        smoke, soot, slats, acids, and metals). The different between PM10 and PM2.5 is simply a matter of size - while
+        PM2.5 is fine, PM10 is larger and coarser.
+    </string>
+
+    <string name="pm10_origin_1">
+        + Dust from construction, landfill, and agriculture
+    </string>
+    <string name="pm10_origin_2">
+        + Dust blown from open lands
+    </string>
+    <string name="pm10_origin_3">
+        + Smoke from wildfires and waster burning
+    </string>
+    <string name="pm10_origin_4">
+        + Chemical reactions from industry
+    </string>
+    <string name="pm10_origin_5">
+        + Motor vehicles
+    </string>
+
+    <string name="pm10_short_term_1">
+        + Difficulty breathing
+    </string>
+    <string name="pm10_short_term_2">
+        + Chest pain
+    </string>
+    <string name="pm10_short_term_3">
+        + General respiratory discomfort
+    </string>
+    <string name="pm10_short_term_4">
+        + Sore throat
+    </string>
+    <string name="pm10_short_term_5">
+        + Nasal congestion
+    </string>
+
+    <string name="pm10_long_term_1">
+        + Lung tissue damage
+    </string>
+    <string name="pm10_long_term_2">
+        + Cancer
+    </string>
+    <string name="pm10_long_term_3">
+        + Asthma
+    </string>
+    <string name="pm10_long_term_4">
+        + Premature death
+    </string>
+</resources>

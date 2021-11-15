@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/design_default_color_background"
+    tools:context=".InfoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarInfo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:title="AQI Guide"
+        app:navigationIcon="@drawable/ic_baseline_close_24"
+        android:background="@color/primaryTextColor" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarInfo"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="@string/info_dialog"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/logoSize"
+                    android:layout_height="@dimen/logoSize"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_good">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/good" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/index_good"
+                        android:textStyle="bold|italic"
+                        android:textSize="@dimen/indexSize"
+                        android:textColor="@color/colorTextInfo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/script_good"
+                        android:textSize="@dimen/scriptSize"
+                        android:textColor="@color/colorTextInfo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/logoSize"
+                    android:layout_height="@dimen/logoSize"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_moderate">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/moderate" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/index_moderate"
+                        android:textStyle="bold|italic"
+                        android:textSize="@dimen/indexSize"
+                        android:textColor="@color/colorTextInfo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/script_moderate"
+                        android:textSize="@dimen/scriptSize"
+                        android:textColor="@color/colorTextInfo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/logoSize"
+                    android:layout_height="@dimen/logoSize"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_unhealthy_for_senstive_groups">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/unhealthyforsensitive" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/index_unhealthyForSensitiveGroups"
+                        android:textStyle="bold|italic"
+                        android:textSize="@dimen/indexSize"
+                        android:textColor="@color/colorTextInfo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/script_unhealthyForSensitiveGroups"
+                        android:textSize="@dimen/scriptSize"
+                        android:textColor="@color/colorTextInfo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/logoSize"
+                    android:layout_height="@dimen/logoSize"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_unhealthy">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/unhealthy" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/index_unhealthy"
+                        android:textStyle="bold|italic"
+                        android:textSize="@dimen/indexSize"
+                        android:textColor="@color/colorTextInfo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/script_unhealthy"
+                        android:textSize="@dimen/scriptSize"
+                        android:textColor="@color/colorTextInfo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/logoSize"
+                    android:layout_height="@dimen/logoSize"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_very_unhealthy">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/veryunhealthy" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/index_veryUnhealthy"
+                        android:textStyle="bold|italic"
+                        android:textSize="@dimen/indexSize"
+                        android:textColor="@color/colorTextInfo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/script_veryUnhealthy"
+                        android:textSize="@dimen/scriptSize"
+                        android:textColor="@color/colorTextInfo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <FrameLayout
+                    android:layout_width="@dimen/logoSize"
+                    android:layout_height="@dimen/logoSize"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_hazardous">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="8dp"
+                        android:src="@drawable/hazardous" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/index_hazardous"
+                        android:textStyle="bold|italic"
+                        android:textSize="@dimen/indexSize"
+                        android:textColor="@color/colorTextInfo"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/script_hazardous"
+                        android:textSize="@dimen/scriptSize"
+                        android:textColor="@color/colorTextInfo" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
+    tools:context=".pm10Activity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarPM10"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:title="PM10"
+        app:navigationIcon="@drawable/icon_back"
+        android:background="@color/primaryTextColor" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarPM10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What is PM10?"
+                android:textSize="18sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_intro"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Where dose it come from?"
+                android:textSize="18sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_origin_1"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_origin_2"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_origin_3"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_origin_4"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_origin_5"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="How does it affect to our health?"
+                android:textSize="18sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="25dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Short term effects"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_short_term_1"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_short_term_2"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_short_term_3"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_short_term_4"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_short_term_5"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Long term effects"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_long_term_1"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_long_term_2"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_long_term_3"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pm10_long_term_4"
+                android:textSize="15sp"
+                android:textColor="@color/contentTextColor"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+</RelativeLayout>
