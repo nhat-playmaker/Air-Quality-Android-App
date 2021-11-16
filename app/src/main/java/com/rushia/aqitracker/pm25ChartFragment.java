@@ -1,5 +1,7 @@
 package com.rushia.aqitracker;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,7 +35,7 @@ public class pm25ChartFragment extends Fragment {
     private ArrayList<BarEntry> barEntriesBad;
 
     BarChart barChartPM25;
-
+    SharedPreferences sharedPreferences;
 
     @Nullable
     @Override
@@ -47,10 +49,18 @@ public class pm25ChartFragment extends Fragment {
         barEntriesGood  = new ArrayList<>();
         barEntriesBad   = new ArrayList<>();
 
+        sharedPreferences = this.requireActivity().getSharedPreferences("PM25-saved-data", Context.MODE_PRIVATE);
+        getSavedData();
+
         getParentFragmentManager().setFragmentResultListener("dataFromMyAirFragmentToPM25", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String json = result.getString("arrayData");
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("jsonData", json);
+                editor.apply();
+
                 arrayData = new ArrayList<>();
 
                 try {
@@ -84,6 +94,39 @@ public class pm25ChartFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void getSavedData() {
+        String json = sharedPreferences.getString("jsonData", "[]");
+//        Toast.makeText(getActivity(), json, Toast.LENGTH_SHORT).show();
+
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            int numberOfData = jsonArray.length();
+            for (int i = 0; i < numberOfData; i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                arrayData.add(new DeviceData(
+                        object.getInt("id"),
+                        object.getInt("co2"),
+                        object.getInt("hcho"),
+                        object.getInt("tvoc"),
+                        object.getInt("pm25"),
+                        object.getInt("pm100"),
+                        object.getDouble("temperature"),
+                        object.getDouble("humidity"),
+                        object.getString("date"),
+                        object.getString("time")
+                ));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        DataPM25 = getDataPM25();
+        getDataBarEntries();
+
+        DrawChart();
+
     }
 
     private void DrawChart() {

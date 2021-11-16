@@ -54,19 +54,18 @@ public class aqiChartFragment extends Fragment {
 
         Initialize(view);
 
-        arrayData                               = new ArrayList<>();
-        DataAQI                                 = new ArrayList<>();
-        barEntriesGood                          = new ArrayList<>();
-        barEntriesModerate                      = new ArrayList<>();
-        barEntriesUnhealthyForSensitiveGroups   = new ArrayList<>();
-        barEntriesUnhealthy                     = new ArrayList<>();
-        barEntriesVeryUnhealthy                 = new ArrayList<>();
-        barEntriesHazardous                     = new ArrayList<>();
+        sharedPreferences = this.requireActivity().getSharedPreferences("AQI-saved-data", Context.MODE_PRIVATE);
+        getSavedData();
 
         getParentFragmentManager().setFragmentResultListener("dataFromMyAirFragmentToAQI", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
                 String json = result.getString("arrayData");
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("jsonData", json);
+                editor.apply();
+
                 arrayData = new ArrayList<>();
 
                 try {
@@ -97,12 +96,46 @@ public class aqiChartFragment extends Fragment {
 
                 DrawChart();
 
-                Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
 
             }
         });
 
         return view;
+    }
+
+    private void getSavedData() {
+        String json = sharedPreferences.getString("jsonData", "[]");
+//        Toast.makeText(getActivity(), json, Toast.LENGTH_SHORT).show();
+
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            int numberOfData = jsonArray.length();
+            for (int i = 0; i < numberOfData; i++) {
+                JSONObject object = jsonArray.getJSONObject(i);
+                arrayData.add(new DeviceData(
+                        object.getInt("id"),
+                        object.getInt("co2"),
+                        object.getInt("hcho"),
+                        object.getInt("tvoc"),
+                        object.getInt("pm25"),
+                        object.getInt("pm100"),
+                        object.getDouble("temperature"),
+                        object.getDouble("humidity"),
+                        object.getString("date"),
+                        object.getString("time")
+                ));
+                arrayData.get(arrayData.size() - 1).setAqi(calcAQI(object.getInt("pm25")));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        DataAQI = getDataAQI();
+        getDataBarEntries();
+
+        DrawChart();
+
     }
 
     private void DrawChart() {
@@ -146,6 +179,15 @@ public class aqiChartFragment extends Fragment {
 
     private void Initialize(View v) {
         barChartAQI = v.findViewById(R.id.barChartAQI);
+
+        arrayData                               = new ArrayList<>();
+        DataAQI                                 = new ArrayList<>();
+        barEntriesGood                          = new ArrayList<>();
+        barEntriesModerate                      = new ArrayList<>();
+        barEntriesUnhealthyForSensitiveGroups   = new ArrayList<>();
+        barEntriesUnhealthy                     = new ArrayList<>();
+        barEntriesVeryUnhealthy                 = new ArrayList<>();
+        barEntriesHazardous                     = new ArrayList<>();
     }
 
     private List<Integer> getDataAQI() {
