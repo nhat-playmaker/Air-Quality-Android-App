@@ -11,4 +11,8 @@
     <dimen name="rcm_frame">70dp</dimen>
     <dimen name="margin_rcm_start_end">10dp</dimen>
     <dimen name="rcm_content_margin">20dp</dimen>
+
+    <dimen name="settings_topic_text_size">18sp</dimen>
+    <dimen name="settings_func_text_size">20sp</dimen>
+    <dimen name="settings_status_text_size">12sp</dimen>
 </resources>
