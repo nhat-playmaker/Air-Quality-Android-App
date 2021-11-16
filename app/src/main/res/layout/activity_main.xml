@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/customToolbar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         app:menu="@menu/menu_main_activity"
         android:background="@color/primaryTextColor">
 

@@ -10,7 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -24,49 +27,30 @@ import java.util.Queue;
 
 public class StatisticFragment extends Fragment {
 
-    TextView textView;
     ArrayList<DeviceData> arrayData;
+    ViewPager2 mViewPager;
+    VP_History_Adapter viewPagerAdapter;
+    TabLayout tabLayout;
+    private final String[] tabNames = new String[] {"AQI", "PM2.5", "CO2"};
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic, container, false);
 
-        textView = view.findViewById(R.id.test);
+        Initialize(view);
+        viewPagerAdapter = new VP_History_Adapter(getActivity().getSupportFragmentManager(), getLifecycle());
         arrayData = new ArrayList<>();
 
-        getParentFragmentManager().setFragmentResultListener("dataFromMyAirFragment", this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
-                String json = result.getString("arrayData");
-
-                try {
-                    JSONArray jsonArray = new JSONArray(json);
-                    int numberOfData = jsonArray.length();
-                    for (int i = 0; i < numberOfData; i++) {
-                        JSONObject object = jsonArray.getJSONObject(i);
-                        arrayData.add(new DeviceData(
-                                object.getInt("id"),
-                                object.getInt("co2"),
-                                object.getInt("hcho"),
-                                object.getInt("tvoc"),
-                                object.getInt("pm25"),
-                                object.getInt("pm100"),
-                                object.getDouble("temperature"),
-                                object.getDouble("humidity"),
-                                object.getString("date"),
-                                object.getString("time")
-                        ));
-                        arrayData.get(arrayData.size() - 1).setAqi(object.getInt("aqi"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-        });
+        mViewPager.setAdapter(viewPagerAdapter);
+        new TabLayoutMediator(tabLayout, mViewPager, (((tab, position) -> tab.setText(tabNames[position])))).attach();
 
         return view;
     }
+
+    private void Initialize(View v) {
+        mViewPager = v.findViewById(R.id.viewPagerHistoricData);
+        tabLayout = v.findViewById(R.id.tabLayout);
+    }
+
 }

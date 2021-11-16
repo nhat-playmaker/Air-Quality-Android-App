@@ -252,12 +252,14 @@ public class MyAirFragment extends Fragment {
             arrayData.get(0).setAqi(aqi);
 
             Bundle result = new Bundle();
-            result.putInt("aqi", aqi);
 
             String JSONdata = new Gson().toJson(arrayData);
             result.putString("arrayData", JSONdata);
 
-            getParentFragmentManager().setFragmentResult("dataFromMyAirFragment", result);
+            getParentFragmentManager().setFragmentResult("dataFromMyAirFragmentToAQI", result);
+            getParentFragmentManager().setFragmentResult("dataFromMyAirFragmentToPM25", result);
+            getParentFragmentManager().setFragmentResult("dataFromMyAirFragmentToCO2", result);
+
             
             textViewAQIValue.setText(aqi+"");
             changeFrameColor(aqi);
