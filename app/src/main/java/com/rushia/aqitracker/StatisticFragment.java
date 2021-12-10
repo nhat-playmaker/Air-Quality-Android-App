@@ -23,6 +23,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 
 public class StatisticFragment extends Fragment {
@@ -39,7 +40,7 @@ public class StatisticFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_statistic, container, false);
 
         Initialize(view);
-        viewPagerAdapter = new VP_History_Adapter(getActivity().getSupportFragmentManager(), getLifecycle());
+        viewPagerAdapter = new VP_History_Adapter(requireActivity().getSupportFragmentManager(), getLifecycle());
         arrayData = new ArrayList<>();
 
         mViewPager.setAdapter(viewPagerAdapter);

@@ -99,9 +99,11 @@ public class MyAirFragment extends Fragment {
 
     private Handler handler = new Handler();
     Runnable runnable;
-    final long delay = 10*1000;
+    final long delay = 10*60*1000;
 
     private int aqi;
+
+    private int last_icon_click = 0;
 
     SharedPreferences sharedPreferences;
 
@@ -124,7 +126,6 @@ public class MyAirFragment extends Fragment {
         textViewLastUpdatedInfo.setText(sharedPreferences.getString("time", "Last updated"));
 
         changeFrameColor(Integer.parseInt(textViewAQIValue.getText().toString()));
-
 
         MainActivity mainActivity = (MainActivity) getActivity();
         assert mainActivity != null;
@@ -177,6 +178,7 @@ public class MyAirFragment extends Fragment {
         imageViewCycling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                last_icon_click = 0;
                 process_rcm_icon(0);
             }
         });
@@ -184,6 +186,7 @@ public class MyAirFragment extends Fragment {
         imageViewWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                last_icon_click = 1;
                 process_rcm_icon(1);
             }
         });
@@ -191,6 +194,7 @@ public class MyAirFragment extends Fragment {
         imageViewFaceMask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                last_icon_click = 2;
                 process_rcm_icon(2);
             }
         });
@@ -198,6 +202,7 @@ public class MyAirFragment extends Fragment {
         imageViewAirFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                last_icon_click = 3;
                 process_rcm_icon(3);
             }
         });
@@ -256,20 +261,22 @@ public class MyAirFragment extends Fragment {
             String JSONdata = new Gson().toJson(arrayData);
             result.putString("arrayData", JSONdata);
 
+            // Send data from MyAir Fragment to each Chart Fragment
             getParentFragmentManager().setFragmentResult("dataFromMyAirFragmentToAQI", result);
             getParentFragmentManager().setFragmentResult("dataFromMyAirFragmentToPM25", result);
             getParentFragmentManager().setFragmentResult("dataFromMyAirFragmentToCO2", result);
 
-            
             textViewAQIValue.setText(aqi+"");
+
             changeFrameColor(aqi);
+            process_rcm_icon(last_icon_click);
         }
     }
 
     private int calcAQI(int pm25) {
         double aqi_min, aqi_max, pm_min, pm_max, pm25_d, aqi;
 
-        pm25_d = (double) pm25;
+        pm25_d = pm25;
 
         if (pm25_d <= 25.0) {
             aqi_min = 0.0;
@@ -403,7 +410,7 @@ public class MyAirFragment extends Fragment {
                 frameLayoutFaceMask.setBackgroundColor(0xfff);
                 frameLayoutAirFilter.setBackgroundColor(0xfff);
                 textViewRecommendationContent.setText(R.string.good_rcm_window);
-                textViewRecommendationContent.setBackgroundResource(R.drawable.bg_bad_rcm);
+                textViewRecommendationContent.setBackgroundResource(R.drawable.bg_good_rcm);
             }
             else if (aqi <= 100) {
                 frameLayoutWindow.setBackgroundResource(R.drawable.bg_bad_rcm);
