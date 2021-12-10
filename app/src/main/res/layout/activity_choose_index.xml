@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
+    tools:context=".ChooseIndexActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAQIIndex"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:title="AQI Index"
+        app:navigationIcon="@drawable/icon_back"
+        android:background="@color/primaryTextColor" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupAQIIndex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_below="@+id/toolbarAQIIndex"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radioButtonVNAQI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layoutDirection="rtl"
+            android:text="VN AQI"
+            android:textSize="24sp"
+            android:checked="true"
+            android:textColor="@color/black"
+            android:buttonTint="#0E528E"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonUSAQI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layoutDirection="rtl"
+            android:text="US AQI"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:buttonTint="#0E528E"/>
+
+        <RadioButton
+            android:id="@+id/radioButtonCNAQI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layoutDirection="rtl"
+            android:text="CN AQI"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:buttonTint="#0E528E"/>
+
+    </RadioGroup>
+
+</RelativeLayout>

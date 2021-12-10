@@ -94,10 +94,9 @@ public class aqiChartFragment extends Fragment {
                 DataAQI = getDataAQI();
                 getDataBarEntries();
 
-                DrawChart();
-
 //                Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
 
+                DrawChart();
             }
         });
 
@@ -134,8 +133,9 @@ public class aqiChartFragment extends Fragment {
         DataAQI = getDataAQI();
         getDataBarEntries();
 
-        DrawChart();
+//        Toast.makeText(getActivity(), DataAQI.size()+"", Toast.LENGTH_SHORT).show();
 
+        DrawChart();
     }
 
     private void DrawChart() {

@@ -44,6 +44,7 @@
                 android:layout_marginTop="50dp"/>
 
             <TextView
+                android:id="@+id/textViewSettingsAQIIndex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -53,11 +54,12 @@
                 app:drawableEndCompat="@drawable/icon_right" />
 
             <TextView
+                android:id="@+id/textViewSelectAQIIndex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/primaryGrayColor"
                 android:textSize="@dimen/settings_status_text_size"
-                android:text="US AQI" />
+                android:text="VN AQI" />
 
             <TextView
                 android:layout_width="match_parent"

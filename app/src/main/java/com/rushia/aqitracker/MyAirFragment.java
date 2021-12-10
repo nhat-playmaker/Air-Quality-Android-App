@@ -64,7 +64,8 @@ public class MyAirFragment extends Fragment {
         textViewPM10Value,
         textViewHCHOValue,
         textViewTVOCValue,
-        textViewCO2Value;
+        textViewCO2Value,
+        textViewAQIIndex;
 
     public RelativeLayout
         relativeLayoutFrame,
@@ -99,9 +100,9 @@ public class MyAirFragment extends Fragment {
 
     private Handler handler = new Handler();
     Runnable runnable;
-    final long delay = 10*60*1000;
+    final long delay = 10*1000;
 
-    private int aqi;
+    private int aqi, chooseAQIIndex;
 
     private int last_icon_click = 0;
 
@@ -136,8 +137,10 @@ public class MyAirFragment extends Fragment {
             @Override
             public void run() {
 
+//                Toast.makeText(getActivity(), "OK", Toast.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 process();
+//                changeAQIIndexUnit();
 
                 // get and save data
                 editor.putString("aqi", textViewAQIValue.getText().toString());
@@ -245,7 +248,7 @@ public class MyAirFragment extends Fragment {
 
             String time = deviceData.getTime();
             int hour = Integer.parseInt(time.substring(0, 2));
-            if (hour + 7 > 24) {
+            if (hour + 7 >= 24) {
                 hour = hour + 7 - 24;
             }
             else {
@@ -490,6 +493,7 @@ public class MyAirFragment extends Fragment {
         textViewHCHOValue = view.findViewById(R.id.textViewHCHOValue);
         textViewTVOCValue = view.findViewById(R.id.textViewTVOCValue);
         textViewCO2Value = view.findViewById(R.id.textViewCO2Value);
+        textViewAQIIndex = view.findViewById(R.id.AQIIndex);
 
         // TODO: init RelativeLayout component
         relativeLayoutFrame = view.findViewById(R.id.relativeLayoutFrame);
@@ -667,6 +671,22 @@ public class MyAirFragment extends Fragment {
             frameLayoutAirFilter.setEnabled(true);
 
             textViewRecommendationContent.setText(R.string.unhealthy_rcm_cycling);
+        }
+    }
+
+    private void changeAQIIndexUnit() {
+        ChooseIndexActivity chooseIndexActivity = (ChooseIndexActivity) getActivity();
+        assert chooseIndexActivity != null;
+        chooseAQIIndex = chooseIndexActivity.chooseID;
+
+        if (chooseAQIIndex == 0) {
+            textViewAQIIndex.setText("VN AQI");
+        }
+        else if (chooseAQIIndex == 1) {
+            textViewAQIIndex.setText("US AQI");
+        }
+        else {
+            textViewAQIIndex.setText("CN AQI");
         }
     }
 

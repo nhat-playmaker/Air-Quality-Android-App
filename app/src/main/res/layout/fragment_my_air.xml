@@ -119,6 +119,7 @@
                                             android:textColor="@color/black"/>
 
                                         <TextView
+                                            android:id="@+id/AQIIndex"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:gravity="center"
@@ -347,6 +348,7 @@
                             android:id="@+id/textViewRecommendContent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:padding="20dp"
                             android:gravity="center"
                             android:background="@drawable/bg_good_rcm"
                             android:text="@string/good_rcm_cycling"
