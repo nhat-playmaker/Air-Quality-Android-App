@@ -24,6 +24,12 @@ public class ChooseIndexActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("aqi-index", chooseID);
+
+                SettingsFragment settingsFragment = new SettingsFragment();
+                settingsFragment.setArguments(bundle);
+
                 ChooseIndexActivity.this.finish();
             }
         });
